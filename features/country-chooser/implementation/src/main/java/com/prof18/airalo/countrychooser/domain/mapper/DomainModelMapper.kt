@@ -1,10 +1,11 @@
 package com.prof18.airalo.countrychooser.domain.mapper
 
-import com.prof18.airalo.countrychooser.data.remote.dto.DTO
-import com.prof18.airalo.countrychooser.domain.model.Model
+import com.prof18.airalo.countrychooser.data.remote.dto.CountryDTO
+import com.prof18.airalo.countrychooser.domain.model.Country
 
-internal fun DTO.toModel(): Model {
-    return Model(
-        foo = this.foo,
+internal fun CountryDTO.toCountry(): Country =
+    Country(
+        id = this.slug,
+        name = this.title,
+        flagImageUrl = this.image.url,
     )
-}

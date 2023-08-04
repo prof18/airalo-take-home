@@ -7,9 +7,15 @@ import com.prof18.airalo.core.R
  */
 fun NetworkError.getErrorLocalizedMessage(): ErrorLocalizedMessage {
     return when (this) {
-        is NetworkError.Network, is NetworkError.NotFound -> {
+        is NetworkError.Network -> {
             ErrorLocalizedMessage(
                 messageStringResID = R.string.unknown_network_error,
+                buttonTextResId = R.string.retry_button,
+            )
+        }
+        is NetworkError.NotFound -> {
+            ErrorLocalizedMessage(
+                messageStringResID = R.string.error_message_not_found,
                 buttonTextResId = R.string.retry_button,
             )
         }

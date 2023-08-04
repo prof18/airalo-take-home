@@ -8,9 +8,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.prof18.airalo.designsystem.theme.Spacing
 import com.prof18.airalo.designsystem.theme.AiraloTheme
+import com.prof18.airalo.designsystem.theme.Spacing
 
 @Composable
 fun ErrorView(
@@ -29,13 +30,16 @@ fun ErrorView(
                 .padding(top = Spacing.regular)
                 .padding(horizontal = Spacing.regular),
             text = title,
+            textAlign = TextAlign.Center,
         )
 
-        Button(onClick = onRetryClick) {
+        Button(
+            modifier = Modifier
+                .padding(top = Spacing.regular)
+                .padding(horizontal = Spacing.large),
+            onClick = onRetryClick,
+        ) {
             Text(
-                modifier = Modifier
-                    .padding(top = Spacing.regular)
-                    .padding(horizontal = Spacing.large),
                 text = buttonText,
             )
         }

@@ -5,9 +5,11 @@
     <string name="error_message_not_allowed">You\'re not allowed to access what you\'ve requested! ⛔️</string>
     <string name="unknown_error">Something unexpected just happened 🧐</string>
     <string name="unknown_network_error">Something unexpected just happened during the connection with our servers 🧐</string>
+    <string name="error_message_not_found">That\'s embarrassing.\nWe couldn\'t find what you were looking for 🕵️</string>
     <string name="server_unreachable">Sorry, servers are on fire 🚒</string>
-    <string name="data_not_found">This is embarrassing. I was unable to found what you have requested 😞</string>
     <string name="title_not_found">Not found</string>
     <string name="retry_button">Retry</string>
     <string name="back_button_content_desc">Back Button</string>
+    <string name="no_countries">Sorry, there are no supported countries. Retry later</string>
+    <string name="popular_countries_header">Popular Countries</string>
 </resources>

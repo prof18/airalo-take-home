@@ -10,6 +10,16 @@ internal sealed interface HomeState {
     ) : HomeState
 
     data class Content(
-        val something: String,
-    ) : HomeState
+        val headerTitle: String,
+        val countryItems: List<CountryItem>,
+    ) : HomeState {
+        data class CountryItem(
+            val id: CountryId,
+            val name: String,
+            val flagImageUrl: String,
+        ) {
+            @JvmInline
+            value class CountryId(val value: String)
+        }
+    }
 }

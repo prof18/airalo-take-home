@@ -5,7 +5,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 
-class TestDispatcherProvider : DispatcherProvider {
+@OptIn(ExperimentalCoroutinesApi::class)
+object TestDispatcherProvider : DispatcherProvider {
+
+    val testDispatcher = UnconfinedTestDispatcher()
 
     override fun io(): CoroutineDispatcher = testDispatcher
 
@@ -16,9 +19,4 @@ class TestDispatcherProvider : DispatcherProvider {
     override fun default(): CoroutineDispatcher = testDispatcher
 
     override fun unconfined(): CoroutineDispatcher = testDispatcher
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    companion object {
-        val testDispatcher = UnconfinedTestDispatcher()
-    }
 }

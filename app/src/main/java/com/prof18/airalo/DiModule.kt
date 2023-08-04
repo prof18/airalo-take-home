@@ -2,14 +2,14 @@ package com.prof18.airalo
 
 import com.prof18.airalo.countrypackages.AboutModule
 import com.prof18.airalo.core.di.CoreModule
-import com.prof18.airalo.countrychooser.HomeModule
+import com.prof18.airalo.countrychooser.CountriesModule
 import org.koin.dsl.module
 import org.koin.ksp.generated.module
 
 val airaloAppModule = module {
     includes(
         CoreModule().module,
-        HomeModule().module,
+        CountriesModule().module,
         AboutModule().module,
     )
 }

@@ -1,6 +1,6 @@
 package com.prof18.airalo.core.di
 
-import com.prof18.airalo.core.net.AuthInterceptor
+import com.prof18.airalo.core.net.NetworkInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.annotation.ComponentScan
@@ -14,7 +14,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class CoreModule {
 
     @Single
-    fun okHttpClient(interceptor: AuthInterceptor): OkHttpClient {
+    fun okHttpClient(interceptor: NetworkInterceptor): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
             level = if (com.prof18.airalo.core.BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
@@ -33,7 +33,7 @@ class CoreModule {
     fun retrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://your-base-url.com")
+            .baseUrl("https://www.airalo.com/api/v2/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

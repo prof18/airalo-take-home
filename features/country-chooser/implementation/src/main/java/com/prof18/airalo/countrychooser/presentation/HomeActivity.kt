@@ -44,7 +44,10 @@ internal class HomeActivity : ComponentActivity() {
                             )
                         }
 
-                        is HomeState.Content -> Greeting("Android")
+                        is HomeState.Content -> {
+                            val content = state as HomeState.Content
+                            Greeting(content.toString())
+                        }
                     }
                 }
             }
