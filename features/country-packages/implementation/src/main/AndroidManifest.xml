@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:supportsRtl="true"
+        android:theme="@style/Theme.airalo">
+
+        <activity
+            android:name="com.prof18.airalo.countrypackages.AboutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.airalo" />
+    </application>
+
+</manifest>

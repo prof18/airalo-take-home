@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Airalo Sample</string>
+    <string name="missing_network_message">It seems that you are not connected to internet! 🤳</string>
+    <string name="error_message_not_allowed">You\'re not allowed to access what you\'ve requested! ⛔️</string>
+    <string name="unknown_error">Something unexpected just happened 🧐</string>
+    <string name="unknown_network_error">Something unexpected just happened during the connection with our servers 🧐</string>
+    <string name="server_unreachable">Sorry, servers are on fire 🚒</string>
+    <string name="data_not_found">This is embarrassing. I was unable to found what you have requested 😞</string>
+    <string name="title_not_found">Not found</string>
+    <string name="retry_button">Retry</string>
+    <string name="back_button_content_desc">Back Button</string>
+</resources>
