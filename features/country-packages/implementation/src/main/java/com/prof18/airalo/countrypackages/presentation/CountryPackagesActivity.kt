@@ -44,6 +44,10 @@ internal class CountryPackagesActivity : ComponentActivity() {
                             )
                         }
 
+                        is PackagesState.Empty -> {
+                            Greeting("empty")
+                        }
+
                         is PackagesState.Content -> {
                             val content = state as PackagesState.Content
                             Greeting(content.toString())

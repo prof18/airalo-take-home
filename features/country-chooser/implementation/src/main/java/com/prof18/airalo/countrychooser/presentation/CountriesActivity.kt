@@ -39,7 +39,7 @@ internal class CountriesActivity : ComponentActivity() {
                             val errorState = state as CountriesState.Error
                             ErrorView(
                                 title = errorState.content,
-                                buttonText = errorState.buttonText,
+                                buttonText = errorState.retryButtonText,
                                 onRetryClick = errorState.onRetryClick,
                             )
                         }

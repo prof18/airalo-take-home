@@ -7,7 +7,7 @@ internal sealed interface CountriesState {
 
     data class Error(
         val content: String,
-        val buttonText: String,
+        val retryButtonText: String,
         val onRetryClick: () -> Unit,
     ) : CountriesState
 

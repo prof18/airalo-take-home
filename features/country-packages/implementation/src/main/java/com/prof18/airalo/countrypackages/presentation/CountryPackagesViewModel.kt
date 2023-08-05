@@ -3,9 +3,6 @@ package com.prof18.airalo.countrypackages.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prof18.airalo.core.architecture.DataResult
-import com.prof18.airalo.core.error.LocalizedErrorMessage
-import com.prof18.airalo.core.error.NetworkError
-import com.prof18.airalo.core.error.getErrorLocalizedMessage
 import com.prof18.airalo.core.utils.ResourceProvider
 import com.prof18.airalo.countrypackages.R
 import com.prof18.airalo.countrypackages.domain.model.CountryId
@@ -49,13 +46,9 @@ internal class CountryPackagesViewModel(
 
                 is DataResult.Error -> {
                     Timber.e(result.throwable, "Error while getting the countries list")
-                    val localizedMessage = result.throwable.generateErrorLocalizedMessage()
-                    emitError(
-                        localizedMessage = localizedMessage,
-                        retryAction = {
-                            fetchPackages(countryId)
-                        },
-                    )
+                    emitError {
+                        fetchPackages(countryId)
+                    }
                 }
             }
         }
@@ -113,43 +106,20 @@ internal class CountryPackagesViewModel(
     }
 
     private fun emitError(
-        localizedMessage: LocalizedErrorMessage,
         retryAction: () -> Unit,
     ) {
+        // TODO: message can be customized based on the error
+        val errorMessage = resourceProvider.getString(CoreR.string.error_message)
+        val retryButtonText = resourceProvider.getString(CoreR.string.retry_button)
+
         countryPackagesMutableState.update {
             PackagesState.Error(
-                content = resourceProvider.getString(
-                    localizedMessage.messageStringResID,
-                ),
-                retryButtonText = resourceProvider.getString(
-                    localizedMessage.buttonTextResId,
-                ),
+                content = errorMessage,
+                retryButtonText = retryButtonText,
                 onRetryClick = {
                     retryAction()
                 },
             )
         }
     }
-
-    private fun Throwable.generateErrorLocalizedMessage(): LocalizedErrorMessage =
-        when (this) {
-            is NetworkError.ApiError -> {
-                // Do here some custom mapping based on the error
-                LocalizedErrorMessage(
-                    messageStringResID = CoreR.string.unknown_network_error_message,
-                    buttonTextResId = CoreR.string.retry_button,
-                )
-            }
-
-            is NetworkError -> {
-                this.getErrorLocalizedMessage()
-            }
-
-            else -> {
-                LocalizedErrorMessage(
-                    messageStringResID = CoreR.string.unknown_network_error_message,
-                    buttonTextResId = CoreR.string.retry_button,
-                )
-            }
-        }
 }

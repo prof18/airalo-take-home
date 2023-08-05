@@ -4,10 +4,5 @@ plugins {
 }
 
 android {
-    buildFeatures {
-        viewBinding = true
-    }
     namespace = "com.prof18.airalo.uicomponents"
 }
-
-

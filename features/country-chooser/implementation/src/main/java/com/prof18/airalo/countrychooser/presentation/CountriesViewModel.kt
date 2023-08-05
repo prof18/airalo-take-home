@@ -4,9 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prof18.airalo.core.R
 import com.prof18.airalo.core.architecture.DataResult
-import com.prof18.airalo.core.error.LocalizedErrorMessage
-import com.prof18.airalo.core.error.NetworkError
-import com.prof18.airalo.core.error.getErrorLocalizedMessage
 import com.prof18.airalo.core.utils.ResourceProvider
 import com.prof18.airalo.countrychooser.domain.model.Country
 import com.prof18.airalo.countrychooser.domain.usecases.CountriesUseCase
@@ -45,10 +42,7 @@ internal class CountriesViewModel(
                     if (countries.isEmpty()) {
                         Timber.w("The country list is empty")
                         emitError(
-                            localizedMessage = LocalizedErrorMessage(
-                                messageStringResID = R.string.no_countries,
-                                buttonTextResId = R.string.retry_button,
-                            ),
+                            errorMessage = resourceProvider.getString(R.string.no_countries),
                             retryAction = {
                                 fetchCountries()
                             },
@@ -60,9 +54,8 @@ internal class CountriesViewModel(
 
                 is DataResult.Error -> {
                     Timber.e(result.throwable, "Error while getting the countries list")
-                    val localizedMessage = result.throwable.generateErrorLocalizedMessage()
                     emitError(
-                        localizedMessage = localizedMessage,
+                        errorMessage = resourceProvider.getString(R.string.error_message),
                         retryAction = {
                             fetchCountries()
                         },
@@ -91,43 +84,19 @@ internal class CountriesViewModel(
         )
 
     private fun emitError(
-        localizedMessage: LocalizedErrorMessage,
+        errorMessage: String,
         retryAction: () -> Unit,
     ) {
+        val retryButtonText = resourceProvider.getString(R.string.retry_button)
+
         homeMutableState.update {
             CountriesState.Error(
-                content = resourceProvider.getString(
-                    localizedMessage.messageStringResID,
-                ),
-                buttonText = resourceProvider.getString(
-                    localizedMessage.buttonTextResId,
-                ),
+                content = errorMessage,
+                retryButtonText = retryButtonText,
                 onRetryClick = {
                     retryAction()
                 },
             )
         }
     }
-
-    private fun Throwable.generateErrorLocalizedMessage(): LocalizedErrorMessage =
-        when (this) {
-            is NetworkError.ApiError -> {
-                // Do here some custom mapping based on the error
-                LocalizedErrorMessage(
-                    messageStringResID = R.string.unknown_network_error_message,
-                    buttonTextResId = R.string.retry_button,
-                )
-            }
-
-            is NetworkError -> {
-                this.getErrorLocalizedMessage()
-            }
-
-            else -> {
-                LocalizedErrorMessage(
-                    messageStringResID = R.string.unknown_network_error_message,
-                    buttonTextResId = R.string.retry_button,
-                )
-            }
-        }
 }

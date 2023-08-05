@@ -9,7 +9,6 @@ import retrofit2.Retrofit
 @Module
 @ComponentScan
 class CountriesModule {
-
     @Factory
     internal fun apiService(retrofit: Retrofit): CountriesApiService {
         return retrofit.create(CountriesApiService::class.java)

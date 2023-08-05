@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Airalo Sample</string>
-    <string name="not_allowed_error_message">You\'re not allowed to access what you\'ve requested! ⛔️</string>
-    <string name="api_error_message">Something unexpected just happened 🧐. Nerd error code: %s</string>
-    <string name="unknown_network_error_message">Something unexpected just happened during the connection with our servers 🧐. Check your internet connection</string>
-    <string name="resource_not_found_error_message">That\'s embarrassing.\nWe couldn\'t find what you were looking for 🕵️</string>
-    <string name="server_unreachable_error_message">Sorry, servers are on fire 🚒</string>
+    <string name="error_message">Something unexpected just happened 🧐. Please try again!</string>
     <string name="retry_button">Retry</string>
     <string name="no_countries">Sorry, there are no supported countries. Retry later</string>
     <string name="popular_countries_header">Popular Countries</string>
