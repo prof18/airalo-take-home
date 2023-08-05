@@ -5,6 +5,6 @@ import com.prof18.airalo.countrychooser.data.remote.dto.CountryDTO
 
 internal interface CountriesRemoteDataSource {
     suspend fun getCountries(
-        countryType: CountryType = CountryType.POPULAR,
+        countryType: CountryType? = null,
     ): DataResult<List<CountryDTO>>
 }

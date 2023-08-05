@@ -6,7 +6,7 @@
         android:theme="@style/Theme.airalo">
 
         <activity
-            android:name="com.prof18.airalo.countrypackages.AboutActivity"
+            android:name=".presentation.CountryPackagesActivity"
             android:exported="false"
             android:theme="@style/Theme.airalo" />
     </application>

@@ -1,6 +1,7 @@
 plugins {
     id("com.prof18.airalo.android.feature")
     id("com.prof18.airalo.android.library.compose")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -12,4 +13,8 @@ dependencies {
     implementation(project(":libraries:design-system"))
 
     implementation(libs.com.jakewharton.timber)
+    implementation(libs.com.squareup.retrofit)
+
+    implementation(libs.com.squareup.moshi)
+    ksp(libs.com.squareup.moshi.kotlin.codegen)
 }

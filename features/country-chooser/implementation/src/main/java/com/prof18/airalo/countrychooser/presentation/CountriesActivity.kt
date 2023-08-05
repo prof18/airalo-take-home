@@ -15,17 +15,17 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.prof18.airalo.designsystem.components.ErrorView
 import com.prof18.airalo.designsystem.components.FullScreenLoader
 import com.prof18.airalo.designsystem.theme.AiraloTheme
-import com.prof18.airalo.countrychooser.presentation.state.HomeState
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-internal class HomeActivity : ComponentActivity() {
+internal class CountriesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel: HomeViewModel by viewModel()
+        val viewModel: CountriesViewModel by viewModel()
 
         setContent {
-            val state by viewModel.homeState.collectAsStateWithLifecycle()
+            val state by viewModel.countriesState.collectAsStateWithLifecycle()
 
             AiraloTheme {
                 Surface(
@@ -33,10 +33,10 @@ internal class HomeActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
                 ) {
                     when (state) {
-                        HomeState.Loading -> FullScreenLoader()
+                        CountriesState.Loading -> FullScreenLoader()
 
-                        is HomeState.Error -> {
-                            val errorState = state as HomeState.Error
+                        is CountriesState.Error -> {
+                            val errorState = state as CountriesState.Error
                             ErrorView(
                                 title = errorState.content,
                                 buttonText = errorState.buttonText,
@@ -44,8 +44,8 @@ internal class HomeActivity : ComponentActivity() {
                             )
                         }
 
-                        is HomeState.Content -> {
-                            val content = state as HomeState.Content
+                        is CountriesState.Content -> {
+                            val content = state as CountriesState.Content
                             Greeting(content.toString())
                         }
                     }

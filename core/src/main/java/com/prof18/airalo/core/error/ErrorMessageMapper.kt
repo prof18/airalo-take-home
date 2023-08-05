@@ -5,35 +5,35 @@ import com.prof18.airalo.core.R
 /**
  * Generates the String Resource ID for the error message and the text button from an [NetworkError]
  */
-fun NetworkError.getErrorLocalizedMessage(): ErrorLocalizedMessage {
+fun NetworkError.getErrorLocalizedMessage(): LocalizedErrorMessage {
     return when (this) {
         is NetworkError.Network -> {
-            ErrorLocalizedMessage(
-                messageStringResID = R.string.unknown_network_error,
+            LocalizedErrorMessage(
+                messageStringResID = R.string.unknown_network_error_message,
                 buttonTextResId = R.string.retry_button,
             )
         }
         is NetworkError.NotFound -> {
-            ErrorLocalizedMessage(
-                messageStringResID = R.string.error_message_not_found,
+            LocalizedErrorMessage(
+                messageStringResID = R.string.resource_not_found_error_message,
                 buttonTextResId = R.string.retry_button,
             )
         }
         is NetworkError.NotAuthorized -> {
-            ErrorLocalizedMessage(
-                messageStringResID = R.string.error_message_not_allowed,
+            LocalizedErrorMessage(
+                messageStringResID = R.string.not_allowed_error_message,
                 buttonTextResId = R.string.retry_button,
             )
         }
         is NetworkError.ServiceNotWorking, is NetworkError.ServiceUnavailable -> {
-            ErrorLocalizedMessage(
-                messageStringResID = R.string.server_unreachable,
+            LocalizedErrorMessage(
+                messageStringResID = R.string.server_unreachable_error_message,
                 buttonTextResId = R.string.retry_button,
             )
         }
         is NetworkError.ApiError -> {
-            ErrorLocalizedMessage(
-                messageStringResID = R.string.unknown_network_error,
+            LocalizedErrorMessage(
+                messageStringResID = R.string.unknown_network_error_message,
                 buttonTextResId = R.string.retry_button,
             )
         }

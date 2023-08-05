@@ -8,7 +8,7 @@ import timber.log.Timber
 class AiraloApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        if (com.prof18.airalo.BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {
             // Log to Crashalytics

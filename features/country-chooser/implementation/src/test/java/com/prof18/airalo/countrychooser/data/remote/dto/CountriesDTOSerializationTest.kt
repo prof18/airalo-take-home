@@ -2,6 +2,7 @@ package com.prof18.airalo.countrychooser.data.remote.dto
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
+import org.intellij.lang.annotations.Language
 import org.junit.Test
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
@@ -20,6 +21,7 @@ class CountriesDTOSerializationTest {
     }
 }
 
+@Language("JSON")
 private val countryJson = """
     [
       {

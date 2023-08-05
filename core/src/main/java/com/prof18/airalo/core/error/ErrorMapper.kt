@@ -27,7 +27,6 @@ fun Throwable.mapToNetworkError(): Throwable {
                     NetworkError.ApiError(
                         cause = this,
                         errorCode = errorCode,
-                        errorContent = content,
                     )
                 }
             }

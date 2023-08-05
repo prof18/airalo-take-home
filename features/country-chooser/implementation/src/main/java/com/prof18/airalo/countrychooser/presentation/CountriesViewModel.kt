@@ -4,15 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prof18.airalo.core.R
 import com.prof18.airalo.core.architecture.DataResult
-import com.prof18.airalo.core.error.ErrorLocalizedMessage
+import com.prof18.airalo.core.error.LocalizedErrorMessage
 import com.prof18.airalo.core.error.NetworkError
 import com.prof18.airalo.core.error.getErrorLocalizedMessage
 import com.prof18.airalo.core.utils.ResourceProvider
 import com.prof18.airalo.countrychooser.domain.model.Country
 import com.prof18.airalo.countrychooser.domain.usecases.CountriesUseCase
-import com.prof18.airalo.countrychooser.presentation.state.HomeState
-import com.prof18.airalo.countrychooser.presentation.state.HomeState.Content.CountryItem
-import com.prof18.airalo.countrychooser.presentation.state.HomeState.Content.CountryItem.CountryId
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem.CountryId
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,13 +22,13 @@ import org.koin.android.annotation.KoinViewModel
 import timber.log.Timber
 
 @KoinViewModel
-internal class HomeViewModel(
+internal class CountriesViewModel(
     private val countriesUseCase: CountriesUseCase,
     private val resourceProvider: ResourceProvider,
 ) : ViewModel() {
 
-    private val homeMutableState = MutableStateFlow<HomeState>(HomeState.Loading)
-    val homeState: StateFlow<HomeState> = homeMutableState.asStateFlow()
+    private val homeMutableState = MutableStateFlow<CountriesState>(CountriesState.Loading)
+    val countriesState: StateFlow<CountriesState> = homeMutableState.asStateFlow()
 
     init {
         fetchCountries()
@@ -36,7 +36,7 @@ internal class HomeViewModel(
 
     private fun fetchCountries() {
         homeMutableState.update {
-            HomeState.Loading
+            CountriesState.Loading
         }
         viewModelScope.launch {
             when (val result = countriesUseCase.getCountries()) {
@@ -45,7 +45,7 @@ internal class HomeViewModel(
                     if (countries.isEmpty()) {
                         Timber.w("The country list is empty")
                         emitError(
-                            localizedMessage = ErrorLocalizedMessage(
+                            localizedMessage = LocalizedErrorMessage(
                                 messageStringResID = R.string.no_countries,
                                 buttonTextResId = R.string.retry_button,
                             ),
@@ -74,7 +74,7 @@ internal class HomeViewModel(
 
     private fun emitData(countries: List<Country>) {
         homeMutableState.update {
-            HomeState.Content(
+            CountriesState.Content(
                 headerTitle = resourceProvider.getString(R.string.popular_countries_header),
                 countryItems = countries.map { country ->
                     country.toCountryItem()
@@ -91,11 +91,11 @@ internal class HomeViewModel(
         )
 
     private fun emitError(
-        localizedMessage: ErrorLocalizedMessage,
+        localizedMessage: LocalizedErrorMessage,
         retryAction: () -> Unit,
     ) {
         homeMutableState.update {
-            HomeState.Error(
+            CountriesState.Error(
                 content = resourceProvider.getString(
                     localizedMessage.messageStringResID,
                 ),
@@ -109,12 +109,12 @@ internal class HomeViewModel(
         }
     }
 
-    private fun Throwable.generateErrorLocalizedMessage(): ErrorLocalizedMessage =
+    private fun Throwable.generateErrorLocalizedMessage(): LocalizedErrorMessage =
         when (this) {
             is NetworkError.ApiError -> {
                 // Do here some custom mapping based on the error
-                ErrorLocalizedMessage(
-                    messageStringResID = R.string.unknown_network_error,
+                LocalizedErrorMessage(
+                    messageStringResID = R.string.unknown_network_error_message,
                     buttonTextResId = R.string.retry_button,
                 )
             }
@@ -124,8 +124,8 @@ internal class HomeViewModel(
             }
 
             else -> {
-                ErrorLocalizedMessage(
-                    messageStringResID = R.string.unknown_network_error,
+                LocalizedErrorMessage(
+                    messageStringResID = R.string.unknown_network_error_message,
                     buttonTextResId = R.string.retry_button,
                 )
             }

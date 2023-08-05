@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Airalo Sample</string>
-    <string name="missing_network_message">It seems that you are not connected to internet! 🤳</string>
-    <string name="error_message_not_allowed">You\'re not allowed to access what you\'ve requested! ⛔️</string>
-    <string name="unknown_error">Something unexpected just happened 🧐</string>
-    <string name="unknown_network_error">Something unexpected just happened during the connection with our servers 🧐</string>
-    <string name="error_message_not_found">That\'s embarrassing.\nWe couldn\'t find what you were looking for 🕵️</string>
-    <string name="server_unreachable">Sorry, servers are on fire 🚒</string>
-    <string name="title_not_found">Not found</string>
+    <string name="not_allowed_error_message">You\'re not allowed to access what you\'ve requested! ⛔️</string>
+    <string name="api_error_message">Something unexpected just happened 🧐. Nerd error code: %s</string>
+    <string name="unknown_network_error_message">Something unexpected just happened during the connection with our servers 🧐. Check your internet connection</string>
+    <string name="resource_not_found_error_message">That\'s embarrassing.\nWe couldn\'t find what you were looking for 🕵️</string>
+    <string name="server_unreachable_error_message">Sorry, servers are on fire 🚒</string>
     <string name="retry_button">Retry</string>
-    <string name="back_button_content_desc">Back Button</string>
     <string name="no_countries">Sorry, there are no supported countries. Retry later</string>
     <string name="popular_countries_header">Popular Countries</string>
+    <string name="package_validity_title">VALIDITY</string>
+    <string name="package_data_title">DATA</string>
+    <string name="package_buy_button_label">%s - BUY NOW</string>
+    <string name="no_packages">Sorry, there are no packages for the selected country. Retry later</string>
 </resources>

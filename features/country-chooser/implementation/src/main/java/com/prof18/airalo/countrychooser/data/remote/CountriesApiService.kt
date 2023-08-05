@@ -7,6 +7,6 @@ import retrofit2.http.Query
 internal interface CountriesApiService {
     @GET("countries")
     suspend fun getCountries(
-        @Query("type") type: String,
+        @Query("type") type: String?,
     ): List<CountryDTO>
 }

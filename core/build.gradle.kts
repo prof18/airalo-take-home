@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     id("com.prof18.airalo.android.base.library")
     id("com.prof18.airalo.android.library.koin.annotations")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -18,7 +19,7 @@ android {
             buildConfigField(
                 "String",
                 "API_KEY",
-                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\""
+                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\"",
             )
         }
         getByName("debug") {
@@ -26,7 +27,7 @@ android {
             buildConfigField(
                 "String",
                 "API_KEY",
-                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\""
+                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\"",
             )
         }
     }
@@ -41,8 +42,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
-
     implementation(libs.koin.core)
+
+    ksp(libs.com.squareup.moshi.kotlin.codegen)
 }
 
 val String.byProperty: String?

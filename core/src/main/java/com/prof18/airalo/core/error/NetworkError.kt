@@ -13,6 +13,5 @@ sealed class NetworkError(
 
     class ServiceNotWorking(cause: Throwable) : NetworkError(cause)
 
-    @Suppress("UnusedPrivateProperty")
-    class ApiError(cause: Throwable, errorCode: Int, errorContent: String?) : NetworkError(cause)
+    class ApiError(cause: Throwable, errorCode: Int) : NetworkError(cause)
 }

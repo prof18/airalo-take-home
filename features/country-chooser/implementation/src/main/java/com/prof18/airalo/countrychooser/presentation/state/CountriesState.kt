@@ -1,22 +1,24 @@
 package com.prof18.airalo.countrychooser.presentation.state
 
-internal sealed interface HomeState {
-    data object Loading : HomeState
+import com.prof18.airalo.core.model.ImageUrl
+
+internal sealed interface CountriesState {
+    data object Loading : CountriesState
 
     data class Error(
         val content: String,
         val buttonText: String,
         val onRetryClick: () -> Unit,
-    ) : HomeState
+    ) : CountriesState
 
     data class Content(
         val headerTitle: String,
         val countryItems: List<CountryItem>,
-    ) : HomeState {
+    ) : CountriesState {
         data class CountryItem(
             val id: CountryId,
             val name: String,
-            val flagImageUrl: String,
+            val flagImageUrl: ImageUrl,
         ) {
             @JvmInline
             value class CountryId(val value: String)

@@ -2,6 +2,6 @@ package com.prof18.airalo.countrypackages.contract
 
 import android.app.Activity
 
-interface AboutContract {
+interface CountryPackagesContract {
     fun launch(currentActivity: Activity)
 }

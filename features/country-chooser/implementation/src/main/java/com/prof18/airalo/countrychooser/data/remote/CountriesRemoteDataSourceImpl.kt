@@ -12,9 +12,9 @@ internal class CountriesRemoteDataSourceImpl(
 
     // Suppress because a generic mapping is done
     @Suppress("TooGenericExceptionCaught")
-    override suspend fun getCountries(countryType: CountryType): DataResult<List<CountryDTO>> {
+    override suspend fun getCountries(countryType: CountryType?): DataResult<List<CountryDTO>> {
         return try {
-            DataResult.Success(countriesApiService.getCountries(type = countryType.value))
+            DataResult.Success(countriesApiService.getCountries(type = countryType?.value))
         } catch (throwable: Throwable) {
             // TODO: check error parsing
             DataResult.Error(throwable.mapToNetworkError())
