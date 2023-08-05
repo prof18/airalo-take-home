@@ -12,10 +12,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.designsystem.components.ErrorView
 import com.prof18.airalo.designsystem.components.FullScreenLoader
 import com.prof18.airalo.designsystem.theme.AiraloTheme
-import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CountriesActivity : ComponentActivity() {

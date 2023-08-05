@@ -54,8 +54,8 @@ comments:
   active: true
   AbsentOrWrongFileLicense:
     active: false
-    licenseairaloFile: 'license.airalo'
-    licenseairaloIsRegex: false
+    licenseTemplateFile: 'license.airalo'
+    licenseTemplateIsRegex: false
   CommentOverPrivateFunction:
     active: false
   CommentOverPrivateProperty:

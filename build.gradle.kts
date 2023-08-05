@@ -24,7 +24,6 @@ allprojects {
         config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
         source.setFrom(files("src/main/java", "src/test/java", "src/androidTest/java"))
         parallel = true
-        autoCorrect = true
     }
 }
 
