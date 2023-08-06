@@ -3,6 +3,7 @@ package com.prof18.airalo.countrychooser.presentation
 import app.cash.turbine.test
 import com.prof18.airalo.core.R
 import com.prof18.airalo.core.dto.ImageDTO
+import com.prof18.airalo.core.model.CountryId
 import com.prof18.airalo.core.model.ImageUrl
 import com.prof18.airalo.countrychooser.CountriesModule
 import com.prof18.airalo.countrychooser.data.remote.CountriesRemoteDataSource
@@ -154,7 +155,7 @@ class CountriesViewModelTest : BaseViewModelTest() {
 
                 val firstCountry = content.countryItems.first()
                 val expectedCountryItem = CountryItem(
-                    id = CountryItem.CountryId(
+                    id = CountryId(
                         value = "italy",
                     ),
                     name = "Italy",

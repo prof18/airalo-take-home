@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.prof18.airalo.core.R
 import com.prof18.airalo.core.model.CountryId
-import com.prof18.airalo.countrychooser.R
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.designsystem.components.ErrorView
 import com.prof18.airalo.designsystem.components.FullScreenLoader
@@ -79,10 +79,8 @@ internal fun CountriesScreen(
 private fun CountriesScreenPreview(
     @PreviewParameter(CountriesPreviewProvider::class) state: CountriesState,
 ) {
-    AiraloTheme {
-        CountriesScreen(
-            state = state,
-            onCountryClick = {},
-        )
-    }
+    CountriesScreen(
+        state = state,
+        onCountryClick = {},
+    )
 }

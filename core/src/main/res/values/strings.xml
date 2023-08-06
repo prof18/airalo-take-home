@@ -9,4 +9,5 @@
     <string name="package_data_title">DATA</string>
     <string name="package_buy_button_label">%s - BUY NOW</string>
     <string name="no_packages">Sorry, there are no packages for the selected country. Retry later</string>
+    <string name="country_chooser_nav_bar_title">Hello</string>
 </resources>

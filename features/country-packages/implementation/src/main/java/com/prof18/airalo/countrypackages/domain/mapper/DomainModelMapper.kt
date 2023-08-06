@@ -17,9 +17,10 @@ internal fun CountryPackagesDTO.toCountryPackages(): CountryPackages =
                 networkDataAmountLabel = packageDTO.data,
                 validityLabel = packageDTO.validity,
                 price = packageDTO.price,
+                // TODO: colors should be taken by the api
                 colorGradient = ColorGradient(
-                    startColor = packageDTO.operator.gradientStart,
-                    endColor = packageDTO.operator.gradientEnd,
+                    startColor = "#EC802C",
+                    endColor = "#F9DF8D",
                 ),
                 networkOperator = NetworkOperator(
                     id = packageDTO.operator.id,

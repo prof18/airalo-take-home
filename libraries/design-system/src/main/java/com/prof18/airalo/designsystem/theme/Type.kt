@@ -36,6 +36,14 @@ val Typography = Typography(
         lineHeight = 20.sp,
     ),
 
+    bodySmall = TextStyle(
+        fontFamily = ibmPlexFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 13.sp,
+        lineHeight = 15.sp,
+        letterSpacing = (-0.1).sp,
+    ),
+
     labelLarge = TextStyle(
         fontFamily = ibmPlexFontFamily,
         fontWeight = FontWeight.SemiBold,

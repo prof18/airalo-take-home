@@ -44,7 +44,7 @@ internal fun CountriesList(
 ) {
     // TODO: check paddings
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Text(
             modifier = Modifier
@@ -57,7 +57,7 @@ internal fun CountriesList(
             contentPadding = PaddingValues(
                 vertical = Spacings.spacing10,
             ),
-            verticalArrangement = Arrangement.spacedBy(Spacings.spacing10)
+            verticalArrangement = Arrangement.spacedBy(Spacings.spacing10),
         ) {
             items(state.countryItems) { countryItem ->
 
@@ -71,7 +71,6 @@ internal fun CountriesList(
                             ),
                             clip = true,
                         )
-
                         .clickable {
                             onCountryClick(countryItem.id)
                         },

@@ -17,6 +17,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import timber.log.Timber
+import java.text.NumberFormat
+import java.util.Currency
+import java.util.Locale
 import com.prof18.airalo.core.R as CoreR
 
 @KoinViewModel
@@ -88,10 +91,9 @@ internal class CountryPackagesViewModel(
                             amountLabel = countryPackage.validityLabel,
                         ),
                     ),
-                    // TODO: mention the price formatter
                     buttonText = resourceProvider.getString(
                         CoreR.string.package_buy_button_label,
-                        countryPackage.price,
+                        formatPrice(countryPackage.price),
                     ),
                     onButtonClick = {
                         // Navigate to package checkout
@@ -103,6 +105,14 @@ internal class CountryPackagesViewModel(
         countryPackagesMutableState.update {
             content
         }
+    }
+
+    private fun formatPrice(price: Double): String {
+        val format: NumberFormat = NumberFormat.getCurrencyInstance()
+        format.maximumFractionDigits = 0
+        format.currency = Currency.getInstance("USD")
+
+        return format.format(price)
     }
 
     private fun emitError(
