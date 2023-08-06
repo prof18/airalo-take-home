@@ -31,7 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import coil.compose.AsyncImage
 import com.prof18.airalo.core.model.ImageUrl
-import com.prof18.airalo.countrypackages.presentation.state.PackagesState.Content
+import com.prof18.airalo.countrypackages.presentation.state.PackagesState.Content.PackageItem
+import com.prof18.airalo.countrypackages.presentation.state.PackagesState.Content.PackageItem.PackageFeature
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 import com.prof18.airalo.designsystem.theme.DividerColor
 import com.prof18.airalo.designsystem.theme.Spacings
@@ -39,7 +40,7 @@ import com.prof18.airalo.designsystem.theme.TextColor
 
 @Composable
 internal fun PackageCard(
-    packageItem: Content.PackageItem,
+    packageItem: PackageItem,
     modifier: Modifier = Modifier,
 ) {
     Box {
@@ -49,19 +50,14 @@ internal fun PackageCard(
                 .width(335.dp)
                 .height(308.dp)
                 .shadow(
-                    elevation = 8.dp,
+                    elevation = Spacings.elevation,
                     shape = RoundedCornerShape(
                         size = Spacings.cornerRadius,
                     ),
                     clip = true,
                 )
                 .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(
-                            Color(packageItem.cardGradient.startColor.toColorInt()),
-                            Color(packageItem.cardGradient.endColor.toColorInt()),
-                        ),
-                    ),
+                    brush = cardGradientColor(packageItem),
                     shape = RoundedCornerShape(Spacings.cornerRadius),
                 ),
         ) {
@@ -85,74 +81,18 @@ internal fun PackageCard(
                     color = TextColor,
                 )
 
-                Divider(
-                    modifier = Modifier
-                        .height(1.dp)
-                        .background(
-                            color = DividerColor,
-                        ),
-                )
+                RowDivider()
 
                 packageItem.features.forEach { feature ->
-                    Column {
-                        Row(
-                            modifier = Modifier
-                                .padding(Spacings.spacing20)
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Icon(
-                                painter = painterResource(id = feature.iconRes),
-                                contentDescription = null,
-                                tint = TextColor,
-                            )
-
-                            Text(
-                                modifier = Modifier
-                                    .padding(start = Spacings.spacing10)
-                                    .weight(1f),
-                                text = feature.title,
-                                style = MaterialTheme.typography.labelMedium,
-                                color = TextColor,
-                            )
-
-                            Text(
-                                text = feature.amountLabel,
-                                style = MaterialTheme.typography.labelLarge,
-                                color = TextColor,
-                            )
-                        }
-
-                        Divider(
-                            modifier = Modifier
-                                .height(1.dp)
-                                .background(
-                                    color = DividerColor,
-                                ),
-                        )
-                    }
+                    FeatureCard(feature = feature)
                 }
 
-                OutlinedButton(
+                BuyButton(
                     modifier = Modifier
                         .padding(top = Spacings.spacing20)
                         .padding(horizontal = Spacings.spacing20),
-                    shape = RoundedCornerShape(Spacings.cornerRadius),
-                    border = BorderStroke(
-                        width = 1.dp,
-                        color = TextColor,
-                    ),
-                    onClick = packageItem.onButtonClick,
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        text = packageItem.buttonText,
-                        style = MaterialTheme.typography.labelSmall,
-                        color = TextColor,
-                    )
-                }
+                    packageItem,
+                )
             }
         }
 
@@ -164,6 +104,86 @@ internal fun PackageCard(
         )
     }
 }
+
+@Composable
+private fun FeatureCard(feature: PackageFeature) {
+    Column {
+        Row(
+            modifier = Modifier
+                .padding(Spacings.spacing20)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                painter = painterResource(id = feature.iconRes),
+                contentDescription = null,
+                tint = TextColor,
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(start = Spacings.spacing10)
+                    .weight(1f),
+                text = feature.title,
+                style = MaterialTheme.typography.labelMedium,
+                color = TextColor,
+            )
+
+            Text(
+                text = feature.amountLabel,
+                style = MaterialTheme.typography.labelLarge,
+                color = TextColor,
+            )
+        }
+
+        RowDivider()
+    }
+}
+
+@Composable
+private fun BuyButton(
+    modifier: Modifier = Modifier,
+    packageItem: PackageItem,
+) {
+    OutlinedButton(
+        modifier = modifier,
+        shape = RoundedCornerShape(Spacings.cornerRadius),
+        border = BorderStroke(
+            width = 1.dp,
+            color = TextColor,
+        ),
+        onClick = packageItem.onButtonClick,
+    ) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            text = packageItem.buttonText,
+            style = MaterialTheme.typography.labelSmall,
+            color = TextColor,
+        )
+    }
+}
+
+@Composable
+private fun RowDivider() {
+    Divider(
+        modifier = Modifier
+            .height(1.dp)
+            .background(
+                color = DividerColor,
+            ),
+    )
+}
+
+@Composable
+private fun cardGradientColor(packageItem: PackageItem) =
+    Brush.horizontalGradient(
+        colors = listOf(
+            Color(packageItem.cardGradient.startColor.toColorInt()),
+            Color(packageItem.cardGradient.endColor.toColorInt()),
+        ),
+    )
 
 @Composable
 private fun CarrierImage(

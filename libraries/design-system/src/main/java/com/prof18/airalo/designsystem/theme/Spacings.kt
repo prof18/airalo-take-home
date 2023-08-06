@@ -11,4 +11,5 @@ object Spacings {
     val spacing30 = 30.dp
 
     val cornerRadius = 7.dp
+    val elevation = 8.dp
 }

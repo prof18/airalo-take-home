@@ -29,7 +29,6 @@ import com.prof18.airalo.designsystem.theme.AiraloTheme
 import com.prof18.airalo.designsystem.theme.Spacings
 import com.prof18.airalo.designsystem.theme.TextColor
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PackagesScreen(
     packagesState: PackagesState,
@@ -42,27 +41,9 @@ internal fun PackagesScreen(
     AiraloTheme {
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            text = appBarTitle,
-                            style = MaterialTheme.typography.titleLarge,
-                            color = TextColor,
-                        )
-                    },
-                    colors = TopAppBarDefaults.mediumTopAppBarColors(
-                        containerColor = Color.White,
-                    ),
-                    navigationIcon = {
-                        IconButton(
-                            onClick = onBackClick,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.ArrowBack,
-                                contentDescription = null,
-                            )
-                        }
-                    },
+                PackagesScreenNavBar(
+                    appBarTitle = appBarTitle,
+                    onBackClick = onBackClick,
                 )
             },
         ) { paddingValues ->
@@ -108,6 +89,36 @@ internal fun PackagesScreen(
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PackagesScreenNavBar(
+    appBarTitle: String,
+    onBackClick: () -> Unit,
+) {
+    TopAppBar(
+        title = {
+            Text(
+                text = appBarTitle,
+                style = MaterialTheme.typography.titleLarge,
+                color = TextColor,
+            )
+        },
+        colors = TopAppBarDefaults.mediumTopAppBarColors(
+            containerColor = Color.White,
+        ),
+        navigationIcon = {
+            IconButton(
+                onClick = onBackClick,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = null,
+                )
+            }
+        },
+    )
 }
 
 @Preview

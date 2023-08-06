@@ -33,6 +33,7 @@ import com.prof18.airalo.core.model.CountryId
 import com.prof18.airalo.core.model.ImageUrl
 import com.prof18.airalo.countrychooser.R
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState
+import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 import com.prof18.airalo.designsystem.theme.Spacings
 
@@ -42,7 +43,6 @@ internal fun CountriesList(
     modifier: Modifier = Modifier,
     onCountryClick: (CountryId) -> Unit,
 ) {
-    // TODO: check paddings
     Column(
         modifier = modifier,
     ) {
@@ -60,50 +60,60 @@ internal fun CountriesList(
             verticalArrangement = Arrangement.spacedBy(Spacings.spacing10),
         ) {
             items(state.countryItems) { countryItem ->
-
-                Card(
-                    shape = RoundedCornerShape(Spacings.cornerRadius),
-                    modifier = Modifier
-                        .shadow(
-                            elevation = 8.dp,
-                            shape = RoundedCornerShape(
-                                size = Spacings.cornerRadius,
-                            ),
-                            clip = true,
-                        )
-                        .clickable {
-                            onCountryClick(countryItem.id)
-                        },
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color.White,
-                    ),
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        FlagImage(
-                            modifier = Modifier
-                                .padding(start = Spacings.spacing20)
-                                .padding(vertical = Spacings.spacing15),
-                            countryItem.flagImageUrl,
-                        )
-
-                        Text(
-                            modifier = Modifier
-                                .padding(start = Spacings.spacing15)
-                                .weight(1f),
-                            text = countryItem.name,
-                        )
-
-                        Icon(
-                            modifier = Modifier
-                                .padding(end = Spacings.spacing20),
-                            painter = painterResource(id = R.drawable.ic_arrow_right),
-                            contentDescription = null,
-                        )
-                    }
-                }
+                CountryCard(
+                    countryItem = countryItem,
+                    onCountryClick = onCountryClick,
+                )
             }
+        }
+    }
+}
+
+@Composable
+private fun CountryCard(
+    countryItem: CountryItem,
+    onCountryClick: (CountryId) -> Unit,
+) {
+    Card(
+        shape = RoundedCornerShape(Spacings.cornerRadius),
+        modifier = Modifier
+            .shadow(
+                elevation = Spacings.elevation,
+                shape = RoundedCornerShape(
+                    size = Spacings.cornerRadius,
+                ),
+                clip = true,
+            )
+            .clickable {
+                onCountryClick(countryItem.id)
+            },
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White,
+        ),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            FlagImage(
+                modifier = Modifier
+                    .padding(start = Spacings.spacing20)
+                    .padding(vertical = Spacings.spacing15),
+                countryItem.flagImageUrl,
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(start = Spacings.spacing15)
+                    .weight(1f),
+                text = countryItem.name,
+            )
+
+            Icon(
+                modifier = Modifier
+                    .padding(end = Spacings.spacing20),
+                painter = painterResource(id = R.drawable.ic_arrow_right),
+                contentDescription = null,
+            )
         }
     }
 }

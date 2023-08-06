@@ -19,7 +19,6 @@ import org.koin.android.annotation.KoinViewModel
 import timber.log.Timber
 import java.text.NumberFormat
 import java.util.Currency
-import java.util.Locale
 import com.prof18.airalo.core.R as CoreR
 
 @KoinViewModel
