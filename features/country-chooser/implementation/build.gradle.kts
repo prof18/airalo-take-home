@@ -15,6 +15,7 @@ dependencies {
 
     implementation(libs.com.squareup.retrofit)
     implementation(libs.com.jakewharton.timber)
+    implementation(libs.io.coil.compose)
 
     implementation(libs.com.squareup.moshi)
     ksp(libs.com.squareup.moshi.kotlin.codegen)

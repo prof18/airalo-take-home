@@ -141,6 +141,7 @@ class CountriesViewModelTest : BaseViewModelTest() {
     fun `When the fetching of the countries is successfull, then the country item is correctly generated`() =
         runTest {
             CountriesRemoteDataSourceFake.countriesList = listOf(
+                defaultCountryDTO.copy(title = "Spain"),
                 defaultCountryDTO,
             )
 

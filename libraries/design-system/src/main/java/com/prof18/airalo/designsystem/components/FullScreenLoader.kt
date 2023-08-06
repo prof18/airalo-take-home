@@ -10,9 +10,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 
 @Composable
-fun FullScreenLoader() {
+fun FullScreenLoader(
+    modifier: Modifier = Modifier,
+) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         contentAlignment = Alignment.Center,
     ) {
         CircularProgressIndicator(

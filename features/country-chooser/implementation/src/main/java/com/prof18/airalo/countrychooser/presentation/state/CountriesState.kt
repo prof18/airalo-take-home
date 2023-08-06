@@ -1,5 +1,6 @@
 package com.prof18.airalo.countrychooser.presentation.state
 
+import com.prof18.airalo.core.model.CountryId
 import com.prof18.airalo.core.model.ImageUrl
 
 internal sealed interface CountriesState {
@@ -19,9 +20,6 @@ internal sealed interface CountriesState {
             val id: CountryId,
             val name: String,
             val flagImageUrl: ImageUrl,
-        ) {
-            @JvmInline
-            value class CountryId(val value: String)
-        }
+        )
     }
 }

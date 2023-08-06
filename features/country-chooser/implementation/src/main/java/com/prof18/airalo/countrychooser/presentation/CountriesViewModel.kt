@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prof18.airalo.core.R
 import com.prof18.airalo.core.architecture.DataResult
+import com.prof18.airalo.core.model.CountryId
 import com.prof18.airalo.core.utils.ResourceProvider
 import com.prof18.airalo.countrychooser.domain.model.Country
 import com.prof18.airalo.countrychooser.domain.usecases.CountriesUseCase
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem
-import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem.CountryId
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -65,9 +65,11 @@ internal class CountriesViewModel(
         countriesMutableState.update {
             CountriesState.Content(
                 headerTitle = resourceProvider.getString(R.string.popular_countries_header),
-                countryItems = countries.map { country ->
-                    country.toCountryItem()
-                },
+                countryItems = countries
+                    .sortedBy { it.name }
+                    .map { country ->
+                        country.toCountryItem()
+                    },
             )
         }
     }

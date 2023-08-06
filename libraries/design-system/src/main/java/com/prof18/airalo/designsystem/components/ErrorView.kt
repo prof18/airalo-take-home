@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.prof18.airalo.designsystem.theme.AiraloTheme
-import com.prof18.airalo.designsystem.theme.Spacing
+import com.prof18.airalo.designsystem.theme.Spacings
 
 @Composable
 fun ErrorView(
@@ -27,16 +27,15 @@ fun ErrorView(
     ) {
         Text(
             modifier = Modifier
-                .padding(top = Spacing.regular)
-                .padding(horizontal = Spacing.regular),
+                .padding(horizontal = Spacings.spacing20),
             text = title,
             textAlign = TextAlign.Center,
         )
 
         Button(
             modifier = Modifier
-                .padding(top = Spacing.regular)
-                .padding(horizontal = Spacing.large),
+                .padding(top = Spacings.spacing10)
+                .padding(horizontal = Spacings.spacing20),
             onClick = onRetryClick,
         ) {
             Text(
