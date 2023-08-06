@@ -8,11 +8,12 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CountriesRepositoryImplTest {
+class CountriesRepositoryTest {
 
-    private val repository: CountriesRepository = CountriesRepositoryImpl(
-        countriesRemoteDataSource = CountriesRemoteDataSourceFake,
-    )
+    private val repository: CountriesRepository =
+        CountriesRepository(
+            countriesRemoteDataSource = CountriesRemoteDataSourceFake,
+        )
 
     @Test
     fun `When the remote data source returns an error, then the error will be propagated`() = runTest {
