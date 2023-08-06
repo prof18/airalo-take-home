@@ -7,6 +7,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+
     implementation(libs.kotlinx.coroutines.test)
     implementation(libs.androidx.test.rules)
+    api(libs.koin.test)
 }

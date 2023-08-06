@@ -7,6 +7,7 @@ import org.junit.Test
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
+// TODO: write a comment about that?
 @OptIn(ExperimentalStdlibApi::class)
 class CountriesDTOSerializationTest {
     @Test

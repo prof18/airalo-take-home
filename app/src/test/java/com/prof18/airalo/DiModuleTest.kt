@@ -6,11 +6,10 @@ import org.koin.test.verify.verify
 
 @OptIn(KoinExperimentalAPI::class)
 class DiModuleTest {
-
     @Test
-    fun checkKoinModule() {
+    fun `Verify that the DI graph is setup correclty`() {
         // Verify Koin configuration
-        com.prof18.airalo.airaloAppModule.verify(
+        airaloAppModule.verify(
             extraTypes = listOf(android.content.Context::class),
         )
     }

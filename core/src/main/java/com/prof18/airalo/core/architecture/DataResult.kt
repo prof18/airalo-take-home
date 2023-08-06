@@ -5,6 +5,8 @@ package com.prof18.airalo.core.architecture
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
+// TODO: delete unused helpers
+
 /**
  * A wrapper to contain successful and failure states
  */

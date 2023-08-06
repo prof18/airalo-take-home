@@ -24,15 +24,11 @@ internal class CountriesViewModel(
     private val resourceProvider: ResourceProvider,
 ) : ViewModel() {
 
-    private val homeMutableState = MutableStateFlow<CountriesState>(CountriesState.Loading)
-    val countriesState: StateFlow<CountriesState> = homeMutableState.asStateFlow()
+    private val countriesMutableState = MutableStateFlow<CountriesState>(CountriesState.Loading)
+    val countriesState: StateFlow<CountriesState> = countriesMutableState.asStateFlow()
 
-    init {
-        fetchCountries()
-    }
-
-    private fun fetchCountries() {
-        homeMutableState.update {
+    fun fetchCountries() {
+        countriesMutableState.update {
             CountriesState.Loading
         }
         viewModelScope.launch {
@@ -66,7 +62,7 @@ internal class CountriesViewModel(
     }
 
     private fun emitData(countries: List<Country>) {
-        homeMutableState.update {
+        countriesMutableState.update {
             CountriesState.Content(
                 headerTitle = resourceProvider.getString(R.string.popular_countries_header),
                 countryItems = countries.map { country ->
@@ -89,7 +85,7 @@ internal class CountriesViewModel(
     ) {
         val retryButtonText = resourceProvider.getString(R.string.retry_button)
 
-        homeMutableState.update {
+        countriesMutableState.update {
             CountriesState.Error(
                 content = errorMessage,
                 retryButtonText = retryButtonText,

@@ -4,6 +4,8 @@ import com.prof18.airalo.core.architecture.DataResult
 import com.prof18.airalo.countrychooser.data.remote.dto.CountryDTO
 import org.koin.core.annotation.Factory
 
+// TODO: Mention about testing the json serialization with mocked server ui tests
+
 @Factory
 internal class CountriesRemoteDataSourceImpl(
     private val countriesApiService: CountriesApiService,
