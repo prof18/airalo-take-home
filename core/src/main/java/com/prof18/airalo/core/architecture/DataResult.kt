@@ -49,3 +49,13 @@ inline fun <reified T> DataResult<T>.requireSuccess(): T {
     }
     return this.data
 }
+
+/**
+ * Throws an IllegalArgumentException, if the receiver is not of type [DataResult.Error]
+ */
+fun <T> DataResult<T>.requireError(): Throwable {
+    require(this is DataResult.Error) {
+        "DataResult should be an error"
+    }
+    return this.throwable
+}

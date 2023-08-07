@@ -25,4 +25,4 @@ include(":features:country-packages:impl")
 include(":features:country-packages:contract")
 
 include(":libraries:design-system")
-include(":libraries:test-shared")
+include(":libraries:test-utils")

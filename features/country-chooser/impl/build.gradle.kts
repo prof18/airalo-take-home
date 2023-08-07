@@ -19,8 +19,8 @@ dependencies {
 
     implementation(libs.com.squareup.moshi)
     ksp(libs.com.squareup.moshi.kotlin.codegen)
+    testImplementation(project(":libraries:test-utils"))
 
-    testImplementation(project(":libraries:test-shared"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.app.cash.turbine)
