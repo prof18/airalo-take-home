@@ -4,6 +4,11 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
 
+/**
+ * Enable Compose in an Android Library module.
+ *
+ * Plugin id: `com.prof18.airalo.android.library.compose`
+ */
 class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

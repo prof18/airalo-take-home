@@ -9,7 +9,7 @@ import org.koin.core.annotation.Factory
 
 @Factory
 internal class CountryPackagesContractImpl : CountryPackagesContract {
-    override fun launch(
+    override fun startFeature(
         currentActivity: Activity,
         countryId: CountryId,
     ) {

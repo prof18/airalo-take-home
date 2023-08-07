@@ -17,7 +17,10 @@ internal fun CountryPackagesDTO.toCountryPackages(): CountryPackages =
                 networkDataAmountLabel = packageDTO.data,
                 validityLabel = packageDTO.validity,
                 price = packageDTO.price,
-                // TODO: colors should be taken by the api
+                /*
+                    The color for the gradient should be taken from the API response.
+                    For this sample, the one defined in Figma are hardcoded
+                 */
                 colorGradient = ColorGradient(
                     startColor = "#EC802C",
                     endColor = "#F9DF8D",

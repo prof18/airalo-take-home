@@ -4,12 +4,15 @@ import com.prof18.airalo.convention.configureKotlinAndroid
 import com.prof18.airalo.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.kotlin
 
+/**
+ * Provide a common setup for the libraries modules
+ *
+ * Plugin id: `com.prof18.airalo.android.library`
+ */
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

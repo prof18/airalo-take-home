@@ -8,7 +8,6 @@ import com.prof18.airalo.countrypackages.presentation.state.PackagesState
 import com.prof18.airalo.countrypackages.presentation.state.PackagesState.Content.PackageItem.PackageFeature
 
 internal class PackagesScreenPreviewProvider : PreviewParameterProvider<PackagesState> {
-
     companion object {
         val errorState = PackagesState.Error(
             content = "Something unexpected just happened. Please try again!",

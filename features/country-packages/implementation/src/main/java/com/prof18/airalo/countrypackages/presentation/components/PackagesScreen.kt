@@ -24,9 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.prof18.airalo.countrypackages.presentation.state.PackagesState
 import com.prof18.airalo.designsystem.components.ErrorView
-import com.prof18.airalo.designsystem.components.FullScreenLoader
+import com.prof18.airalo.designsystem.components.Loader
 import com.prof18.airalo.designsystem.theme.AiraloTheme
-import com.prof18.airalo.designsystem.theme.Spacings
 import com.prof18.airalo.designsystem.theme.TextColor
 
 @Composable
@@ -48,7 +47,7 @@ internal fun PackagesScreen(
             },
         ) { paddingValues ->
             when (packagesState) {
-                PackagesState.Loading -> FullScreenLoader(
+                PackagesState.Loading -> Loader(
                     modifier = Modifier
                         .padding(paddingValues)
                         .fillMaxSize(),
@@ -81,7 +80,6 @@ internal fun PackagesScreen(
                     PackagesList(
                         modifier = Modifier
                             .padding(paddingValues)
-                            .padding(top = Spacings.spacing30)
                             .fillMaxWidth(),
                         packagesContent = packagesState,
                     )

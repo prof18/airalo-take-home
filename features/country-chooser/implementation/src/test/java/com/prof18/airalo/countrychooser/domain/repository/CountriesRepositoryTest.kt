@@ -10,33 +10,34 @@ import kotlin.test.assertEquals
 
 class CountriesRepositoryTest {
 
-    private val repository: CountriesRepository =
-        CountriesRepository(
-            countriesRemoteDataSource = CountriesRemoteDataSourceFake,
-        )
+    private val repository: CountriesRepository = CountriesRepository(
+        countriesRemoteDataSource = CountriesRemoteDataSourceFake,
+    )
 
     @Test
-    fun `When the remote data source returns an error, then the error will be propagated`() = runTest {
-        val error = Throwable()
+    fun `When the remote data source returns an error, then the error will be propagated`() =
+        runTest {
+            val error = Throwable()
 
-        CountriesRemoteDataSourceFake.countriesList = null
-        CountriesRemoteDataSourceFake.error = error
+            CountriesRemoteDataSourceFake.countriesList = null
+            CountriesRemoteDataSourceFake.error = error
 
-        val result = repository.getCountries()
-        assertEquals(error, result.requireError())
-    }
+            val result = repository.getPopularCountries()
+            assertEquals(error, result.requireError())
+        }
 
     @Test
-    fun `When the remote data source returns a list of countries, then the countries are correctly mapped`() = runTest {
-        CountriesRemoteDataSourceFake.countriesList = listOf(
-            defaultCountryDTO,
-        )
+    fun `When the remote data source returns a list of countries, then the countries are correctly mapped`() =
+        runTest {
+            CountriesRemoteDataSourceFake.countriesList = listOf(
+                defaultCountryDTO,
+            )
 
-        val countries = repository.getCountries().requireSuccess()
-        val firstCountry = countries.first()
+            val countries = repository.getPopularCountries().requireSuccess()
+            val firstCountry = countries.first()
 
-        assertEquals("italy", firstCountry.id)
-        assertEquals("Italy", firstCountry.name)
-        assertEquals("https://www.imageUrl.com", firstCountry.flagImageUrl.url)
-    }
+            assertEquals("italy", firstCountry.id)
+            assertEquals("Italy", firstCountry.name)
+            assertEquals("https://www.imageUrl.com", firstCountry.flagImageUrl.url)
+        }
 }

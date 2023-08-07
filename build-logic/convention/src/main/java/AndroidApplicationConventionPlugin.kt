@@ -5,6 +5,12 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
+
+/**
+ * Setup the Android Application module
+ *
+ * Plugin id: `com.prof18.airalo.android.application`
+ */
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
@@ -24,7 +30,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                             isMinifyEnabled = false
                             proguardFiles(
                                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                                "proguard-rules.pro"
+                                "proguard-rules.pro",
                             )
                         }
                     }

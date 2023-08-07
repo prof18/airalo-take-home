@@ -6,6 +6,11 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
+/**
+ * Provide a common setup for the features modules
+ *
+ * Plugin id: `com.prof18.airalo.android.feature`
+ */
 class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

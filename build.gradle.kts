@@ -1,10 +1,10 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
     alias(libs.plugins.android.application).apply(false)
     alias(libs.plugins.android.library).apply(false)
     alias(libs.plugins.kotlin.android).apply(false)
     alias(libs.plugins.ksp).apply(false)
-    alias(libs.plugins.com.mikepenz.aboutlibraries).apply(false)
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.io.gitlab.arturbosch.detekt)
 }
@@ -40,7 +40,9 @@ tasks {
 }
 
 fun String.isStableVersion(): Boolean {
-    val stableKeyword =
-        listOf("RELEASE", "FINAL", "GA").any { uppercase(java.util.Locale.ROOT).contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA")
+        .any {
+            uppercase(java.util.Locale.ROOT).contains(it)
+        }
     return stableKeyword || Regex("^[0-9,.v-]+(-r)?$").matches(this)
 }

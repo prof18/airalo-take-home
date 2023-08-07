@@ -8,6 +8,11 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
+/**
+ * Provide a common setup for the Android library modules
+ *
+ * Plugin id: `com.prof18.airalo.android.base.library`
+ */
 class AndroidBaseLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

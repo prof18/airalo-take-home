@@ -20,7 +20,7 @@ import com.prof18.airalo.core.R
 import com.prof18.airalo.core.model.CountryId
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.designsystem.components.ErrorView
-import com.prof18.airalo.designsystem.components.FullScreenLoader
+import com.prof18.airalo.designsystem.components.Loader
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 import com.prof18.airalo.designsystem.theme.Spacings
 
@@ -46,7 +46,7 @@ internal fun CountriesScreen(
             },
         ) { paddingValues ->
             when (state) {
-                CountriesState.Loading -> FullScreenLoader(
+                CountriesState.Loading -> Loader(
                     modifier = Modifier
                         .padding(paddingValues)
                         .fillMaxSize(),

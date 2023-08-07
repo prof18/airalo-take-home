@@ -4,6 +4,11 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
+/**
+ * Enable Koin Annotations in an Android library module
+ *
+ * Plugin id: `com.prof18.airalo.android.library.koin.annotations`
+ */
 class AndroidLibraryKoinAnnotationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

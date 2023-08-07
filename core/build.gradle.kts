@@ -1,5 +1,3 @@
-import java.util.Properties
-
 plugins {
     id("com.prof18.airalo.android.base.library")
     id("com.prof18.airalo.android.library.koin.annotations")
@@ -11,25 +9,6 @@ android {
 
     buildFeatures {
         buildConfig = true
-    }
-
-    buildTypes {
-        getByName("release") {
-            // Network API key
-            buildConfigField(
-                "String",
-                "API_KEY",
-                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\"",
-            )
-        }
-        getByName("debug") {
-            // Network API key
-            buildConfigField(
-                "String",
-                "API_KEY",
-                "\"${"apiKey".byProperty ?: System.getenv("API_KEY")}\"",
-            )
-        }
     }
 }
 
@@ -46,14 +25,3 @@ dependencies {
 
     ksp(libs.com.squareup.moshi.kotlin.codegen)
 }
-
-val String.byProperty: String?
-    get() {
-        val local = Properties()
-        val localProperties: File = rootProject.file("local.properties")
-        if (localProperties.exists()) {
-            localProperties.inputStream().use { local.load(it) }
-            return local.getProperty(this)
-        }
-        return null
-    }

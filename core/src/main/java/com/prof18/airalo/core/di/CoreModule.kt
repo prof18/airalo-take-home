@@ -1,5 +1,6 @@
 package com.prof18.airalo.core.di
 
+import com.prof18.airalo.core.BuildConfig
 import com.prof18.airalo.core.net.NetworkInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,11 +13,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @Module
 @ComponentScan("com.prof18.airalo.core")
 class CoreModule {
-
     @Single
     fun okHttpClient(interceptor: NetworkInterceptor): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = if (com.prof18.airalo.core.BuildConfig.DEBUG) {
+            level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
             } else {
                 HttpLoggingInterceptor.Level.NONE

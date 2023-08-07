@@ -11,7 +11,7 @@ class AiraloApp : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {
-            // Log to Crashalytics
+            // Send logs to Crashlytics or other services
         }
 
         startKoin {

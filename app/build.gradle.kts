@@ -1,6 +1,5 @@
 plugins {
     id("com.prof18.airalo.android.application")
-    alias(libs.plugins.com.mikepenz.aboutlibraries)
 }
 
 android {
@@ -8,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId = "com.prof18.airalo.sample"
-        versionCode = 10000
+        versionCode = 1
         versionName = "1.0.0"
     }
 

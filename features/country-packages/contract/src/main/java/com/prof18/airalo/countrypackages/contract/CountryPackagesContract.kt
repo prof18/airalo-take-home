@@ -4,7 +4,7 @@ import android.app.Activity
 import com.prof18.airalo.core.model.CountryId
 
 interface CountryPackagesContract {
-    fun launch(
+    fun startFeature(
         currentActivity: Activity,
         countryId: CountryId,
     )

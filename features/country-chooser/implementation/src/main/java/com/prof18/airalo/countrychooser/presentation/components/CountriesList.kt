@@ -36,6 +36,7 @@ import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 import com.prof18.airalo.designsystem.theme.Spacings
+import com.prof18.airalo.designsystem.theme.TextColor
 
 @Composable
 internal fun CountriesList(
@@ -51,6 +52,7 @@ internal fun CountriesList(
                 .padding(bottom = Spacings.spacing15),
             text = state.headerTitle,
             style = MaterialTheme.typography.titleMedium,
+            color = TextColor,
         )
 
         LazyColumn(
@@ -106,6 +108,8 @@ private fun CountryCard(
                     .padding(start = Spacings.spacing15)
                     .weight(1f),
                 text = countryItem.name,
+                style = MaterialTheme.typography.bodyMedium,
+                color = TextColor,
             )
 
             Icon(

@@ -3,6 +3,15 @@ package com.prof18.airalo.testshared
 import androidx.annotation.StringRes
 import com.prof18.airalo.core.utils.ResourceProvider
 
+/**
+ * A fake version of the ResourceProvider
+ *
+ * - Use `resourceProvider.setValue(R.string.key, "string-to-return")` to set a string
+ *    without arguments
+ * - Use `resourceProvider.setValue(R.string.key, "string-to-return", "arg1", "arg2")` to set
+ *    a string with one or more arguments
+ *
+ */
 object ResourceProviderFake : ResourceProvider {
 
     private val stringMap = mutableMapOf<String, String>()

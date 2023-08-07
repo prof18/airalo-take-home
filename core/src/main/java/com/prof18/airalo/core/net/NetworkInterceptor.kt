@@ -11,7 +11,10 @@ class NetworkInterceptor : Interceptor {
         val newRequest = chain.request()
             .newBuilder()
             .header("Accept", "application/json")
-            // TODO: add comment about getting the language from shared prefs
+            /*
+                For this sample, the language is always the same.
+                In a real scenario, the user's locale should be injected
+             */
             .header("Accept-Language", "en")
             .build()
 

@@ -25,7 +25,7 @@ internal class CountriesActivity : ComponentActivity() {
             CountriesScreen(
                 state = state,
                 onCountryClick = { countryId ->
-                    countryPackagesContract.launch(
+                    countryPackagesContract.startFeature(
                         currentActivity = this@CountriesActivity,
                         countryId = countryId,
                     )

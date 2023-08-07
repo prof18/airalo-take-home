@@ -4,8 +4,6 @@ import com.prof18.airalo.core.architecture.DataResult
 import com.prof18.airalo.countrychooser.data.remote.dto.CountryDTO
 import org.koin.core.annotation.Factory
 
-// TODO: Mention about testing the json serialization with mocked server ui tests
-
 @Factory
 internal class CountriesRemoteDataSourceImpl(
     private val countriesApiService: CountriesApiService,
@@ -17,7 +15,11 @@ internal class CountriesRemoteDataSourceImpl(
         return try {
             DataResult.Success(countriesApiService.getCountries(type = countryType?.value))
         } catch (throwable: Throwable) {
-            // TODO: mention about error parsing
+            /*
+                For this sample, the exception is send without any mapping.
+                In a real situation the exception could be mapped to a domain model
+                to represent specific errors (e.g. a custom API error code).
+             */
             DataResult.Error(throwable)
         }
     }

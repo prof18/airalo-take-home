@@ -47,7 +47,6 @@ internal fun PackageCard(
         Box(
             modifier = modifier
                 .padding(top = Spacings.spacing20)
-                .width(335.dp)
                 .height(308.dp)
                 .shadow(
                     elevation = Spacings.elevation,

@@ -11,7 +11,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Decide what to open -> In the future open the onboarding activity if it's a new user
+
+        /*
+            For this sample, the country selection Activity is always started.
+            In a real situation there should be a ViewModel that checks some status
+            (e.g. user logged in or out) and decide where to navigate.
+         */
         startActivity(
             countriesContract.getIntent(this),
         )

@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.prof18.airalo.designsystem.theme.AiraloTheme
 
 @Composable
-fun FullScreenLoader(
+fun Loader(
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -27,6 +27,6 @@ fun FullScreenLoader(
 @Composable
 private fun FullScreenLoaderPreview() {
     AiraloTheme {
-        FullScreenLoader()
+        Loader()
     }
 }

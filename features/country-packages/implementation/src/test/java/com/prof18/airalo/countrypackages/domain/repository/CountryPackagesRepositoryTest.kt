@@ -1,6 +1,6 @@
 package com.prof18.airalo.countrypackages.domain.repository
 
-class CountryPackagesRepositoryImplTest {
+class CountryPackagesRepositoryTest {
 
     // TODO: implement
 }

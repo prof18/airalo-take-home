@@ -12,10 +12,10 @@ import org.koin.core.annotation.Factory
 internal class CountriesRepository(
     private val countriesRemoteDataSource: CountriesRemoteDataSource,
 ) {
-    suspend fun getCountries(): DataResult<List<Country>> =
+    suspend fun getPopularCountries(): DataResult<List<Country>> =
         countriesRemoteDataSource.getCountries(countryType = CountryType.POPULAR)
-            .mapIfSuccess {
-                it.map { dto ->
+            .mapIfSuccess { countries ->
+                countries.map { dto ->
                     dto.toCountry()
                 }
             }

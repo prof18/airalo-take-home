@@ -109,6 +109,9 @@ internal class CountryPackagesViewModel(
     private fun formatPrice(price: Double): String {
         val format: NumberFormat = NumberFormat.getCurrencyInstance()
         format.maximumFractionDigits = 0
+
+        // For this sample, we assume that the currency is always USD.
+        // In real scenarios, the user's locale or the a currency code from the API should be used
         format.currency = Currency.getInstance("USD")
 
         return format.format(price)
@@ -117,7 +120,6 @@ internal class CountryPackagesViewModel(
     private fun emitError(
         retryAction: () -> Unit,
     ) {
-        // TODO: message can be customized based on the error
         val errorMessage = resourceProvider.getString(CoreR.string.error_message)
         val retryButtonText = resourceProvider.getString(CoreR.string.retry_button)
 

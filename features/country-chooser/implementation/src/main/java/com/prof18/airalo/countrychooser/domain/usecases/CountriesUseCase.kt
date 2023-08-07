@@ -12,8 +12,8 @@ internal class CountriesUseCase(
     private val countriesRepository: CountriesRepository,
     private val dispatcherProvider: DispatcherProvider,
 ) {
-    suspend fun getCountries(): DataResult<List<Country>> =
+    suspend fun getPopularCountries(): DataResult<List<Country>> =
         withContext(dispatcherProvider.io()) {
-            return@withContext countriesRepository.getCountries()
+            return@withContext countriesRepository.getPopularCountries()
         }
 }

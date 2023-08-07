@@ -20,7 +20,11 @@ internal class CountryPackagesRemoteDataSourceImpl(
                 ),
             )
         } catch (throwable: Throwable) {
-            // TODO: mention about error parsing
+            /*
+                For this sample, the exception is send without any mapping.
+                In a real situation the exception could be mapped to a domain model
+                to represent specific errors (e.g. a custom API error code).
+             */
             DataResult.Error(throwable)
         }
     }

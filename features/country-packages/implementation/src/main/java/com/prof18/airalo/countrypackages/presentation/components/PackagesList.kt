@@ -21,6 +21,7 @@ internal fun PackagesList(
         modifier = modifier,
         contentPadding = PaddingValues(
             vertical = Spacings.spacing10,
+            horizontal = Spacings.spacing20,
         ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(Spacings.spacing20),

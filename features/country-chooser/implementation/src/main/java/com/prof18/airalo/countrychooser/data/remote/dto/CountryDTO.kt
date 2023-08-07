@@ -5,7 +5,6 @@ import com.prof18.airalo.core.dto.SeoDTO
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-// TODO: try with an error
 @JsonClass(generateAdapter = true)
 internal data class CountryDTO(
     val id: Int,

@@ -7,7 +7,14 @@ import org.junit.Test
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-// TODO: write a comment about that?
+/*
+    This is a test done to verify that there aren't any wrong defined field in the DTO
+    (e.g. nullable/not nullable) when dealing with an unknown API.
+
+    In a real scenario, there should be an agreement between backend and frontend
+    (e.g. with OpenAPI) and the serialization could be verified with a MockWebServer during
+    UI/Integration tests
+ */
 @OptIn(ExperimentalStdlibApi::class)
 class CountriesDTOSerializationTest {
     @Test

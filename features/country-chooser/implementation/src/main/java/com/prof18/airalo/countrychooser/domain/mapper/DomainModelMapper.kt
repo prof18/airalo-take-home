@@ -8,5 +8,7 @@ internal fun CountryDTO.toCountry(): Country =
     Country(
         id = this.slug,
         name = this.title,
-        flagImageUrl = ImageUrl(url = this.image.url),
+        flagImageUrl = ImageUrl(
+            url = this.image.url,
+        ),
     )

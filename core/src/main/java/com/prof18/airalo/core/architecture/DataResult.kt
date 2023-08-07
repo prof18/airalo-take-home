@@ -5,8 +5,6 @@ package com.prof18.airalo.core.architecture
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
-// TODO: delete unused helpers
-
 /**
  * A wrapper to contain successful and failure states
  */
@@ -15,13 +13,7 @@ sealed class DataResult<out T> {
     data class Error(val throwable: Throwable) : DataResult<Nothing>()
 }
 
-fun <T> DataResult<T>.isSuccess(): Boolean {
-    contract {
-        returns(true) implies (this@isSuccess is DataResult.Success)
-    }
-    return this is DataResult.Success
-}
-
+// TODO: doc
 fun <T> DataResult<T>.isError(): Boolean {
     contract {
         returns(true) implies (this@isError is DataResult.Error)

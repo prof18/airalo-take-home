@@ -6,6 +6,14 @@ import org.intellij.lang.annotations.Language
 import org.junit.Test
 import kotlin.test.assertNotNull
 
+/*
+    This is a test done to verify that there aren't any wrong defined field in the DTO
+    (e.g. nullable/not nullable) when dealing with an unknown API.
+
+    In a real scenario, there should be an agreement between backend and frontend
+    (e.g. with OpenAPI) and the serialization could be verified with a MockWebServer during
+    UI/Integration tests
+ */
 @OptIn(ExperimentalStdlibApi::class)
 class CountryPackagesDTOTest {
     @Test

@@ -32,7 +32,7 @@ internal class CountriesViewModel(
             CountriesState.Loading
         }
         viewModelScope.launch {
-            when (val result = countriesUseCase.getCountries()) {
+            when (val result = countriesUseCase.getPopularCountries()) {
                 is DataResult.Success -> {
                     val countries = result.data
                     if (countries.isEmpty()) {
@@ -45,7 +45,7 @@ internal class CountriesViewModel(
                         )
                         return@launch
                     }
-                    emitData(countries)
+                    emitState(countries)
                 }
 
                 is DataResult.Error -> {
@@ -61,7 +61,7 @@ internal class CountriesViewModel(
         }
     }
 
-    private fun emitData(countries: List<Country>) {
+    private fun emitState(countries: List<Country>) {
         countriesMutableState.update {
             CountriesState.Content(
                 headerTitle = resourceProvider.getString(R.string.popular_countries_header),
