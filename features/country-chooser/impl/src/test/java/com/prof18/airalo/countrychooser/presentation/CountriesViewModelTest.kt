@@ -10,7 +10,7 @@ import com.prof18.airalo.countrychooser.fakes.CountriesRemoteDataSourceFake
 import com.prof18.airalo.countrychooser.fixtures.defaultCountryDTO
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState
 import com.prof18.airalo.countrychooser.presentation.state.CountriesState.Content.CountryItem
-import com.prof18.airalo.testshared.BaseViewModelTest
+import com.prof18.airalo.testsutils.BaseViewModelTest
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before

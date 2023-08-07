@@ -1,4 +1,4 @@
-package com.prof18.airalo.testshared
+package com.prof18.airalo.testsutils
 
 import com.prof18.airalo.core.coroutines.DispatcherProvider
 import com.prof18.airalo.core.di.CoreModule

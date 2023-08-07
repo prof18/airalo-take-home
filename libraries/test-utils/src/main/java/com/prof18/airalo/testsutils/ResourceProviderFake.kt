@@ -1,4 +1,4 @@
-package com.prof18.airalo.testshared
+package com.prof18.airalo.testsutils
 
 import androidx.annotation.StringRes
 import com.prof18.airalo.core.utils.ResourceProvider

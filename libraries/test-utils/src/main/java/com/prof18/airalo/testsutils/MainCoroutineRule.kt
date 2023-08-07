@@ -1,4 +1,4 @@
-package com.prof18.airalo.testshared
+package com.prof18.airalo.testsutils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
