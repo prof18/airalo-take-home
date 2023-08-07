@@ -19,9 +19,9 @@ rootProject.name = "airalo-sample"
 include(":app")
 include(":core")
 
-include(":features:country-chooser:implementation")
+include(":features:country-chooser:impl")
 include(":features:country-chooser:contract")
-include(":features:country-packages:implementation")
+include(":features:country-packages:impl")
 include(":features:country-packages:contract")
 
 include(":libraries:design-system")

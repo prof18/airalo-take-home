@@ -19,9 +19,9 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":features:country-chooser:contract"))
-    implementation(project(":features:country-chooser:implementation"))
+    implementation(project(":features:country-chooser:impl"))
     implementation(project(":features:country-packages:contract"))
-    implementation(project(":features:country-packages:implementation"))
+    implementation(project(":features:country-packages:impl"))
     implementation(project(":libraries:design-system"))
 
     implementation(libs.com.jakewharton.timber)
