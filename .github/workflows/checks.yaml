@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: set up JDK
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
@@ -27,7 +27,13 @@ jobs:
           gradle-home-cache-cleanup: true
           cache-read-only: false
 
-      - name: Run Check -> Check + Tests
-        run: ./gradlew build check  --continue
-        env:
-          TMDB_KEY: ${{ secrets.TMDB_KEY }}
+      - name: Run Check + Assemble Debug
+        run: ./gradlew check assembleDebug --continue
+
+      - name: Upload reports
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-reports
+          path: |
+            **/build/reports/*   
